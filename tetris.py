@@ -3,13 +3,22 @@ from typing import List
 import random
 
 """
-In this interview question, we will implement a simplified version of Tetris!
+In this interview question, we will implement a simplified version of Tetris.
 
-On initialization, a new piece appears near the top center of the board. On each tick, the game tries to move that piece down by 1 row. If moving down is valid, it falls one step. If moving down would make it go out of bounds or overlap a locked cell, it locks onto the board.
+########################
+# Basic game mechanics #
+########################
+- On initialization, a new piece appears near the top center of the board. 
+- On each tick, the game tries to move that piece down by 1 row.
+ - If moving down is valid, it falls one step. 
+ - If moving down would make it go out of bounds or overlap a locked cell, it locks onto the board.
+   - After a piece locks, the game clears any full rows. The rows above shift downward, and the player’s score increases by the number of rows cleared. Then a new falling piece is spawned.
 
-After a piece locks, the game clears any full rows. The rows above shift downward, and the player’s score increases by the number of rows cleared. Then a new falling piece is spawned.
+######################
+# Player interaction #
+######################
 
-The player can control the falling piece in only a few ways:
+The player can control the falling piece in only 2 ways:
 
 - move it left by 1
 - move it right by 1
@@ -18,6 +27,10 @@ Any move is ignored if it would place part of the piece:
 
 - out of bounds
 - on top of a locked cell
+
+############
+# Game end #
+############
 
 The game ends when a new piece is spawned which overlaps a locked cell.
 """
